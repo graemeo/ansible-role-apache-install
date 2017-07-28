@@ -1,3 +1,11 @@
 ---
 - name: Test output
   command: echo 'hello world'
+- name: Create apps directory
+  file: 
+     path: /apps
+     state: directory
+- name: Copy Apache Webserver to destination
+  copy:
+     src: ../files/apache
+     dest: /apps/
