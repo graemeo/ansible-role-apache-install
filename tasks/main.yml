@@ -1,17 +1,15 @@
 ---
-- name: Test output
-  command: echo 'hello world'
 - name: Create apps directory
   file: 
-     path: /apps
+     path: apps
      state: directory
 - name: Copy Apache archive to destination
   copy:
      src: ../files/apache.tar.gz
-     dest: /apps/
+     dest: ~/apps/
 - name: Unpack Apache archive
-  command: tar xvzf /apps/apache.tar.gz
+  command: tar xvzf ~/apps/apache.tar.gz -C ~/apps/
 - name: Delete Apache archive on destination
   file:
-     src: /apps/apache.tar.gz
+     path: ~/apps/apache.tar.gz
      state: absent
