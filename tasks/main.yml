@@ -5,7 +5,13 @@
   file: 
      path: /apps
      state: directory
-- name: Copy Apache Webserver to destination
+- name: Copy Apache archive to destination
   copy:
-     src: ../files/apache
+     src: ../files/apache.tar.gz
      dest: /apps/
+- name: Unpack Apache archive
+  command: tar xvzf /apps/apache.tar.gz
+- name: Delete Apache archive on destination
+  file:
+     src: /apps/apache.tar.gz
+     state: absent
