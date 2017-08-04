@@ -1,15 +1,15 @@
 ---
 - name: Create apps directory
   file: 
-     path: apps
+     path: apps/tools
      state: directory
 - name: Copy Apache archive to destination
   copy:
      src: ../files/apache.tar.gz
-     dest: ~/apps/
+     dest: ~/apps/tools/
 - name: Unpack Apache archive
-  command: tar xvzf ~/apps/apache.tar.gz -C ~/apps/
+  command: tar xvzf ~/apps/tools/apache.tar.gz -C ~/apps/tools/
 - name: Delete Apache archive on destination
   file:
-     path: ~/apps/apache.tar.gz
+     path: ~/apps/tools/apache.tar.gz
      state: absent
